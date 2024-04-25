@@ -7,9 +7,13 @@ from sklearn.preprocessing import StandardScaler
 import numpy as np
 import joblib 
 
-# Load data from CSV file
-folder_path = 'C:/Users/jspra/Downloads/BME 450/data'
-file_path = os.path.join(folder_path, 'cardio_train.csv')
+# # Load data from CSV file
+# folder_path = 'C:/Users/jspra/Downloads/BME 450/data'
+# file_path = os.path.join(folder_path, 'cardio_train.csv')
+# data = np.loadtxt(file_path, delimiter=';', skiprows=1)
+
+github_url = 'https://raw.githubusercontent.com/DeanS88/BME450-project/main/cardio_train.csv'
+file_path = 'cardio_train.csv'
 data = np.loadtxt(file_path, delimiter=';', skiprows=1)
 
 # Separate features and labels
