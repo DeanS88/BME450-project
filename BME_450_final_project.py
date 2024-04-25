@@ -5,12 +5,15 @@ from torch.utils.data import TensorDataset, DataLoader
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import numpy as np
+import requests
+from io import StringIO
 import joblib 
 
-# # Load data from CSV file
-# folder_path = 'C:/Users/jspra/Downloads/BME 450/data'
-# file_path = os.path.join(folder_path, 'cardio_train.csv')
-# data = np.loadtxt(file_path, delimiter=';', skiprows=1)
+# Load data from CSV file
+github_url = 'https://raw.githubusercontent.com/DeanS88/BME450-project/main/cardio_train.csv'
+response = requests.get(github_url)
+
+data = np.loadtxt(StringIO(response.text), delimiter=';', skiprows=1)
 
 github_url = 'https://raw.githubusercontent.com/DeanS88/BME450-project/main/cardio_train.csv'
 file_path = 'cardio_train.csv'
@@ -114,8 +117,6 @@ with torch.no_grad():
     
     # Print the predicted class label
     print("Predicted class:", predicted_class)
-
-    print("input tensor:", train_inputs[sample_num, :])
 
 model_state_dict = model.state_dict()
 
